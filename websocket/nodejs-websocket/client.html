@@ -1,0 +1,109 @@
+<html>
+<body>
+	<div id="loginBox">
+		<input type="text" id="name" placeholder="请设置你的昵称" />
+		<button id="setname" type="button">设置</button>
+	</div>
+
+	<div id="sendMessageBox" style="display:none;">
+		<input type="text" id="text" placeholder="请输出聊天内容" />
+		<button id="btn" type="button">发送</button>
+	</div>
+
+	<div id="chatWrap" style="height:400px; overflow-y:auto; background:#eee; padding:20px; margin-top:10px;">
+		<div id="chatBox">
+		
+		</div>		
+	</div>
+
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script>
+	var ws = null;
+
+	document.getElementById('setname').onclick = function() {
+		var name = document.getElementById('name').value;
+		if (name === '') {
+			alert('名字不能为空');
+			return false;
+		}
+
+		document.getElementById('loginBox').style.display = 'none';
+		document.getElementById('sendMessageBox').style.display = 'block';
+
+		ws = new WebSocket('ws://localhost:2333');
+
+		ws.onopen = function() {
+			// 连接成功
+			ws.send(JSON.stringify({name:name, type:'setname'}));
+
+			// 监听发送信息
+			document.getElementById('btn').onclick = function(){
+				send();
+			}
+
+			// 监听回车
+			document.getElementById('text').onkeyup = function(e) {
+				if (e.keyCode == 13) {
+					send();
+				}
+			}
+
+		}
+
+		// 监听服务端信息
+		ws.onmessage = function(e) {
+			console.log(e.data);
+
+			var data = JSON.parse(e.data);
+
+			createChatPanel(data);
+
+			// switch (data.type) {
+			// 	case 'login' :
+			// 		createChatPanel();
+			// 		break;
+			// 	case 'chat' :
+			// 		createChatPanel();
+			// 		break;
+			// 	default :
+			// 		break;
+			// }
+			
+		}
+	}
+
+	// 发送消息
+	function send()
+	{
+		var text = document.getElementById('text').value;
+		ws.send(JSON.stringify({
+			text:text,
+			type:'chat'
+		}));
+
+		document.getElementById('text').value = '';
+	}
+
+	// 处理服务器返回消息
+	function createChatPanel(data)
+	{
+		var div = document.createElement('div');
+		var span1 = document.createElement('span');	
+		var span2 = document.createElement('span');	
+		span1.innerHTML = data.name +' ' + (new Date()).toString();
+		span2.innerHTML = data.text;
+		span1.style.display = 'inline-block';
+		span1.style.color = '#999';
+		span1.style.marginTop = '10px';
+
+		div.appendChild(span1);
+		div.appendChild(document.createElement('br'));
+		div.appendChild(span2);
+		document.getElementById('chatBox').appendChild(div);
+
+		$('#chatWrap').scrollTop( $('#chatWrap')[0].scrollHeight);
+	}
+
+	</script>
+</body>
+</html>

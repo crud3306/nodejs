@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Todo List</title>
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="/assets/styles.css" type="text/css" />
+	<script type="text/javascript" src="/assets/todo-list.js"></script>
+</head>	
+<body>
+	<div id="toto-table">
+		<form>
+			<input type="text" name="item" placeholder="Add new item ..." required />
+			<button type="submit">Add Item</button>
+		</form>
+		<ul>
+			<% todos.forEach(function(todo){%>
+			<li><%= todo.item ? todo.item : '----'  %></li>
+			<% }) %>
+		</ul>
+	</div>
+
+</body>
+</html>

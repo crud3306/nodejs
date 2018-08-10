@@ -1,0 +1,25 @@
+#toto-table {
+	width:400px;
+}
+
+#toto-table form { 
+	background: #eeeeee;
+	padding: 10px;
+}
+
+#toto-table ul {
+	margin-top:10px;
+	background: #f1f1f1;
+	padding: 10px;
+	list-style-type:none;
+}
+
+#toto-table ul li {
+	color:#666;
+	padding: 5px 0;
+}
+
+#toto-table ul li:hover {
+	text-decoration:line-through;
+	color:#999;
+}

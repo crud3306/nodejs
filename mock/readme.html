@@ -1,0 +1,23 @@
+
+
+官方地址：http://mockjs.com/
+
+注意：mockjs 可以模拟一些查询接口，但不能模拟一些持久化数据的接口（增删改等）
+
+使用：
+1 引入mock.js
+2 引入后，全局对象上会多一个Mock对象
+3 Mock 对象中最常用的就是mock方法
+
+<script src="https://unpkg.com/jquery"></script>
+<script src="https://unpkg.com/mockjs"></script>
+<script>
+Mock.mock('/users', 'get', {
+	hello:'haha'
+});
+
+$.get('/users', function(res){
+	console.log(res);
+});
+</script>
+
