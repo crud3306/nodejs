@@ -10,7 +10,7 @@
 
 此命令将要求你输入几个参数，例如此应用的名称和版本。 你可以直接按“回车”键接受默认设置即可，下面这个除外：
 entry point: (index.js)
-键入 app.js 或者你所希望的名称，这是当前应用的入口文件。如果你希望采用默认的 index.js 文件名，只需按“回车”键即可。
+键入 app.js 或者你所希望的名称，这是当前应用的入口文件。如果你希望采用默认的 index.js 文件名，只需按“回车”键即可。  
   
 
   
@@ -19,9 +19,9 @@ entry point: (index.js)
 安装express
 --------------
 > npm install express --save
-
-官方api地址：
-http://www.expressjs.com.cn/4x/api.html
+  
+官方api地址：  
+http://www.expressjs.com.cn/4x/api.html  
 
 
 
@@ -63,54 +63,54 @@ var server = app.listen(3000, function () {
 }); 
 */
 ```
-
-
-
+  
+  
+  
 request
 --------------
 
 req.params.xx
 ---------------
-接收路由中的特殊值，如/order/1 中的数字1
-
-
+接收路由中的特殊值，如/order/1 中的数字1  
+  
+  
 req.query.xx
 ---------------
-接收get参数，如/order/list?page=1&type=9 中的page与type
-
+接收get参数，如/order/list?page=1&type=9 中的page与type  
+  
 
 req.path
 ---------------
-Contains the path part of the request URL.
+Contains the path part of the request URL.  
 
-// example.com/users?sort=desc
-req.path
-// => "/users"
+// example.com/users?sort=desc  
+req.path  
+// => "/users"  
 
 
 req.hostname
 ---------------
-Contains the hostname from the “Host” HTTP header.
+Contains the hostname from the “Host” HTTP header.  
+  
+// Host: "example.com:3000"  
+req.hostname  
+// => "example.com"  
 
-// Host: "example.com:3000"
-req.hostname
-// => "example.com"
 
-
-req.ip
+req.ip  
 ---------------
-The remote IP address of the request.
-
-If the trust proxy is setting enabled, it is the upstream address; see Express behind proxies for more information.
-
-req.ip
-// => "127.0.0.1"
-
-
-最多见官方文档
+The remote IP address of the request.  
+  
+If the trust proxy is setting enabled, it is the upstream address; see Express behind proxies for more information.  
+  
+req.ip  
+// => "127.0.0.1"  
 
 
-
+最多见官方文档  
+  
+  
+  
 response
 --------------
 
