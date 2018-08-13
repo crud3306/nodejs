@@ -6,11 +6,12 @@
   
 第二步：安装node,在终端输入以下命令  
 > brew install node  
-或者brew install nodejs，注：是一样的，后者是前者的别名  
+> 或者
+> brew install nodejs，注：是一样的，后者是前者的别名  
   
 第三步：查看node安装成功与否  
 > node -v  
-如果显示的版本号，即安装成功  
+如果显示出版本号，即安装成功  
   
 
   
