@@ -1,8 +1,13 @@
 
 var express = require('express');
+var path = require('path');
 
 var app=express();
 
+// 设置静态文件
+app.use(express.static(path.join(__dirname, 'public')))
+
+// 设置路由
 app.get('/profile/:id', (req, res) => {
 	console.log(req.params);
 

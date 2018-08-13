@@ -6,8 +6,11 @@ var express = require('express');
 var socketIo = require('socket.io');
 
 var app = express();
+
+// 指定静态文件路径
 app.use(express.static(path.join(__dirname, './public')));
 
+// 创建http server，传入express
 var server = http.Server(app);
 var io = new socketIo(server, {
 	pingTimeout: 1000*10,	// 超时时间
@@ -18,6 +21,7 @@ var io = new socketIo(server, {
 	path:'/js',	// 提供客户端js的路径
 	serverClient:false	// 是否提供客户端js(socket.io-client)
 });
+
 server.listen(8000, (err)=>{
 	if (err) {
 		return console.error(error);
@@ -25,3 +29,4 @@ server.listen(8000, (err)=>{
 
 	console.log('server started listening port %s', server.address().port);
 });
+
