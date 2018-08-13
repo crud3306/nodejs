@@ -1,23 +1,24 @@
 
-使用express 前提
-==============
-
-前提你已经安装了 Node.js，接下来为你的应用创建一个目录，然后进入此目录并将其作为当前工作目录。
-mkdir myapp
-cd myapp
+使用 express 的前提
+--------------
+前提你已经安装了 Node.js，接下来为你的应用创建一个目录，然后进入此目录并将其作为当前工作目录。  
+> mkdir myapp
+> cd myapp
 
 通过 npm init 命令为你的应用创建一个 package.json 文件。 
-npm init
+> npm init
 
 此命令将要求你输入几个参数，例如此应用的名称和版本。 你可以直接按“回车”键接受默认设置即可，下面这个除外：
 entry point: (index.js)
 键入 app.js 或者你所希望的名称，这是当前应用的入口文件。如果你希望采用默认的 index.js 文件名，只需按“回车”键即可。
+  
 
+  
 接下来安装 Express 并将其保存到依赖列表中
 
 安装express
-===============
-npm install express --save
+--------------
+> npm install express --save
 
 官方api地址：
 http://www.expressjs.com.cn/4x/api.html
@@ -25,7 +26,8 @@ http://www.expressjs.com.cn/4x/api.html
 
 
 入门例子：
-===============
+--------------
+```nodejs
 var express = require('express');
 var app = express();
 
@@ -51,18 +53,22 @@ app.get('/', function(req, res){
 
 // 服务监听3000端口
 app.listen(3000);
-或者
-<!-- var server = app.listen(3000, function () {
+
+// 或者
+/*
+var server = app.listen(3000, function () {
      var host = server.address().address;
      var port = server.address().port;
      console.log('Example app listening at http://%s:%s', host, port);
-}); -->
-
+}); 
+*/
+```
 
 
 
 request
-===============
+--------------
+
 req.params.xx
 ---------------
 接收路由中的特殊值，如/order/1 中的数字1
@@ -106,7 +112,7 @@ req.ip
 
 
 response
-===============
+--------------
 
 
 
