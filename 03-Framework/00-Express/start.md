@@ -1,9 +1,10 @@
 
+
 使用 express 的前提
 --------------
 前提你已经安装了 Node.js，接下来为你的应用创建一个目录，然后进入此目录并将其作为当前工作目录。  
-> mkdir myapp
-> cd myapp
+> mkdir myapp  
+> cd myapp  
 
 通过 npm init 命令为你的应用创建一个 package.json 文件。 
 > npm init
@@ -25,9 +26,43 @@ http://www.expressjs.com.cn/4x/api.html
 
 
 
-入门例子：
+入门demo1
+-----------------
+第一步：新建一个文件test.js  
+```js
+var http = require('http');  
+  
+var data = { key:'aa', hello:'hello world' };  
+  
+var srv = http.createServer(function(req, res){
+	res.writeHead(200, { 'Content-Type':'application/json' });
+	res.end(JSON.stringify(data));
+});
+
+srv.listen(8080, function(){
+	console.log('listening on 8080');
+});
+```
+
+  
+第二步：用终端找到其所在的目录运行该test.js文件  
+> node ./test.js
+  
+第三步：通过浏览器进行访问,返回json格式的数据  
+> http://localhost:8080/  
+  
+第四步：前端就可以通过调用这个接口进行数据解析了,并且可以在当前页面进行数据展示了.  
+  
+第五步：停止服务  
+> ctrl + c  
+
+
+
+
+
+入门demo2
 --------------
-```nodejs
+```js
 var express = require('express');
 var app = express();
 
@@ -56,7 +91,7 @@ app.listen(3000);
 
 // 或者
 /*
-var server = app.listen(3000, function () {
+var server = app.listen(3000, function(){
      var host = server.address().address;
      var port = server.address().port;
      console.log('Example app listening at http://%s:%s', host, port);
@@ -105,10 +140,6 @@ If the trust proxy is setting enabled, it is the upstream address; see Express b
   
 req.ip  
 // => "127.0.0.1"  
-
-
-最多见官方文档  
-http://www.expressjs.com.cn/4x/api.html    
   
   
 response
@@ -116,7 +147,8 @@ response
 
 
 
-
+最多见官方文档  
+http://www.expressjs.com.cn/4x/api.html    
 
 
 

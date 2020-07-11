@@ -1,6 +1,6 @@
 
 环境安装
------------------
+=============
 第一步：打开终端,输入以下命令安装Homebrew  
 > /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"  
   
@@ -12,36 +12,52 @@
 第三步：查看node安装成功与否  
 > node -v  
 如果显示出版本号，即安装成功  
-  
 
-  
-测试  
------------------
-第一步：新建一个文件test.js  
-```nodejs
-var http = require('http');  
-  
-var data = { key:'aa', hello:'hello world' };  
-  
-var srv = http.createServer(function(req, res){
-	res.writeHead(200, { 'Content-Type':'application/json' });
-	res.end(JSON.stringify(data));
-});
+查看当前使用的 NPM 版本：
+> npm -v
 
-srv.listen(8080, function(){
-	console.log('listening on 8080');
-});
+
+
+使用淘宝 NPM 镜像
+=============
+大家都知道国内直接使用 npm 的官方镜像是非常慢的，这里推荐使用淘宝 NPM 镜像。
+
+淘宝 NPM 镜像是一个完整 npmjs.org 镜像，你可以用此代替官方版本(只读)，同步频率目前为 10分钟 一次以保证尽量与官方服务同步。
+
+你可以使用淘宝定制的 cnpm (gzip 压缩支持) 命令行工具代替默认的 npm:
+> npm install -g cnpm --registry=https://registry.npm.taobao.org
+
+这样就可以使用 cnpm 命令来安装模块了：
+> cnpm install [name]
+
+
+
+
+
+
+第一个Node.js程序：Hello World！
+=============
+脚本模式
+-------------
+以下是我们的第一个Node.js程序：
+vim helloworld.js
+```sh
+console.log("Hello World");
 ```
+运行实例 »
+> node helloworld.js
 
-  
-第二步：用终端找到其所在的目录运行该test.js文件  
-> node ./test.js
-  
-第三步：通过浏览器进行访问,返回json格式的数据  
-> http://localhost:8080/  
-  
-第四步：前端就可以通过调用这个接口进行数据解析了,并且可以在当前页面进行数据展示了.  
-  
-第五步：停止服务  
-> ctrl + c  
+程序执行后，正常的话，就会在终端输出 Hello World。
+
+
+
+交互模式
+-------------
+打开终端，键入node进入命令交互模式，可以输入一条代码语句后立即执行并显示结果，例如：
+
+```sh
+$ node
+> console.log('Hello World!');
+Hello World!
+```
   
